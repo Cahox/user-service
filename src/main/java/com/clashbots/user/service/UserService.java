@@ -32,7 +32,7 @@ public class UserService {
     public ResponseTemplateVO getUserWithContract(Long userId) {
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user = userRepository.findByUserId(userId);
-        Contract contract = restTemplate.getForObject("http://localhost:9002/contracts/" + user.getContractId(), Contract.class);
+        Contract contract = restTemplate.getForObject("http://CONTRACT-SERVICE/contracts/" + user.getContractId(), Contract.class);
 
         vo.setUser(user);
         vo.setContract(contract);
