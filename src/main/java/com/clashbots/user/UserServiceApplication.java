@@ -13,19 +13,19 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class UserServiceApplication {
 	@Value("${spring.rabbitmq.host}")
-	String host;
+	String rHost;
 	@Value("${spring.rabbitmq.username}")
-	String username;
+	String rUsername;
 	@Value("${spring.rabbitmq.password}")
-	String password;
+	String rPassword;
 	public static void main(String[] args) {
 		SpringApplication.run(UserServiceApplication.class, args);
 	}
 	@Bean
 	CachingConnectionFactory connectionFactory() {
-		CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(host);
-		cachingConnectionFactory.setUsername(username);
-		cachingConnectionFactory.setPassword(password);
+		CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(rHost);
+		cachingConnectionFactory.setUsername(rUsername);
+		cachingConnectionFactory.setPassword(rPassword);
 		return cachingConnectionFactory;
 	}
 
