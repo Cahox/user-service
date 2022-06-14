@@ -26,6 +26,20 @@ public class UserController {
         return userService.findUserById(userId);
     }
 
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable("id") Long userId, @RequestBody User user){
+        log.info("inside update user by id method of UserController");
+        user.setUserId(userId);
+        return userService.saveUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public Boolean deleteUser(@PathVariable("id") Long userId){
+        log.info("inside update user by id method of UserController");
+        userService.deleteById(userId);
+        return userService.findUserById(userId) == null;
+    }
+
     private RabbitmqSender rabbitMqSender;
     @Autowired
     public UserController(RabbitmqSender rabbitMqSender) {

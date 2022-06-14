@@ -21,4 +21,8 @@ public class UserService {
         log.info("inside find user by id method of UserService");
         return userRepository.findByUserId(userId);
     }
+
+    public void deleteById(Long userId){
+        userRepository.deleteById(userId);
+    }
 }
